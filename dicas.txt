@@ -1,0 +1,11 @@
+CSS Puro    >> Tailwind
+---------------------------------------------------
+background  >> bg-
+margin      >> m-
+    left    >> ml-
+    right   >> mlr-
+    top     >> mt-
+    bottom  >> mb-
+padding     >> p-
+height      >> h-
+width       >> w-
