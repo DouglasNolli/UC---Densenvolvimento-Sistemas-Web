@@ -1,13 +1,17 @@
-# Disciplina de desenvolvimento de sistemas web
+# Disciplina de Desenvolvimento de Sistemas Web
 
-* **Estudante:** Douglas R. Nolli
+**Estudante:** Douglas R. Nolli
 
-## Objetivos do projeto
+## Objetivo
 
-Desenvolver um gerenciador de tarefas completo, multi-usuarios, persistindo em dados em SQLite.
+Este repositório reúne as atividades desenvolvidas na disciplina de Desenvolvimento de Sistemas Web.
 
-* -desafio_aulas_3e4.html
-  resolução do desafio das aulas 3 e 4, colocando em pratica as praticas de tailwind (CSS)
+O principal objetivo é desenvolver um gerenciador de tarefas (To-Do List) com suporte a múltiplos usuários e persistência de dados utilizando SQLite.
 
-* -tailwind.html 
-  aula passa a passa com professor
+## Arquivos
+
+* **desafio_aulas_3e4.html**
+  Resolução do desafio das aulas 3 e 4, colocando em prática os conceitos de Tailwind CSS.
+
+* **tailwind.html**
+  Exercício desenvolvido em aula, acompanhando o passo a passo apresentado pelo professor.
