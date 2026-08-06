@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desafio Card Responsivo</title>
+
+  <!-- Tailwind CSS via Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-50 min-h-screen font-sans antialiased flex items-center justify-center p-4">
+
+  <!-- INÍCIO CARD -->
+  <div class="bg-white border border-slate-200 rounded-xl shadow-sm max-w-md md:max-w-2xl p-6">
+
+    <!-- Container de Layout -->
+    <div class="flex flex-col md:flex-row items-center md:items-start gap-6">
+
+      <!-- Avatar -->
+      <div class="w-24 h-24 rounded-full bg-slate-300 flex items-center justify-center text-2xl font-bold text-slate-700 shrink-0">
+        JS
+      </div>
+
+      <!-- Informações do Depoimento -->
+      <div class="text-center md:text-left">
+        <span class="text-sm text-slate-500">
+          Desenvolvedor Front-end
+        </span>
+
+        <h1 class="text-2xl font-bold text-slate-800 mt-1">
+          Douglas Nolli
+        </h1>
+
+        <p class="text-slate-600 mt-3">
+          "O segredo de uma interface incrível não está nas cores, mas no domínio absoluto do espaçamento e da hierarquia visual."
+        </p>
+
+        <button class="mt-5 px-5 py-2 border border-slate-300 rounded-lg transition-colors hover:bg-slate-50">
+          Ver Perfil
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
