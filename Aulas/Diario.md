@@ -44,3 +44,19 @@
 ##💡Observações (opcional)
 (fixei as 4 regras de ouro: nunca validar inline, nunca criar db.prepare() dentro da rota, nunca devolver erro.message pro cliente e nunca concatenar valor do usuário no SQL)
 
+------------------------------------------------------------------------
+
+# Aula 03 — Autenticação: registro e login com bcrypt e JWT (23/09/2026)
+
+## ✅ O que eu aprendi
+(nunca guardar senha em texto puro, usar bcrypt.hashSync para gerar o hash no registro e bcrypt.compareSync para conferir no login, e gerar um token JWT com jwt.sign para o usuário provar quem é sem reenviar a senha)
+
+## 🧩 Principal dificuldade
+(entender por que o login compara a senha com um hash falso mesmo quando o e-mail não existe, em vez de simplesmente retornar erro na hora)
+
+## 🔧 Como eu resolvi
+(vi que isso evita timing attack: sem o hash falso, a resposta do servidor seria mais rápida quando o e-mail não existe, e um atacante poderia usar esse tempo para descobrir quais e-mails estão cadastrados)
+
+##💡Observações (opcional)
+(o e-mail agora é UNIQUE no banco, então tive que apagar o tarefas.db antigo para a regra valer; próxima aula é usar o token JWT para proteger as rotas de tarefas)
+
