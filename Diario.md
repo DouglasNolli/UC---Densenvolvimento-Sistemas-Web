@@ -91,3 +91,19 @@
 
 ## 💡 Observações (opcional)
 (o caderno de receitas fica na pasta Aula-07-10-2026/minha-primeira-confeitaria — organizar os ingredientes na bancada e acender os fornos para iniciar a produção)
+
+------------------------------------------------------------------------
+
+# Aula 06 — Conectando o React à API com login JWT (21/10/2026)
+
+## ✅ O que eu aprendi
+(arquivos novos na raiz: server.ts — API com CORS, rotas /api/tasks protegidas por JWT e /api/auth/register e /login; request.http — testes das rotas; tarefas.db — banco SQLite; web/ — app React + TypeScript com api.ts (chamadas à API e token no localStorage), Login.tsx (tela de login/registro) e App.tsx)
+
+## 🧩 Principal dificuldade
+(fazer o front conversar com a API sem erro de CORS e manter o token entre as requisições)
+
+## 🔧 Como eu resolvi
+(liberei o CORS no server.ts e centralizei o endereço da API e o token no api.ts)
+
+## 💡 Observações (opcional)
+(próxima aula: ligar o CRUD de tarefas na tela — Aula 07)
