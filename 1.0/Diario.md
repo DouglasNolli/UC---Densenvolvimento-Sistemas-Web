@@ -60,3 +60,34 @@
 ##💡Observações (opcional)
 (o e-mail agora é UNIQUE no banco, então tive que apagar o tarefas.db antigo para a regra valer; próxima aula é usar o token JWT para proteger as rotas de tarefas)
 
+------------------------------------------------------------------------
+
+# Aula 04 — Protegendo rotas com JWT e isolando tarefas por usuário (30/09/2026)
+
+## ✅ O que eu aprendi
+(criar um middleware authenticate que lê o header Authorization: Bearer <token>, valida com jwt.verify e injeta o usuarioId no req; todas as rotas de tarefas agora filtram por usuario_id, então cada usuário só vê e altera as próprias tarefas)
+
+## 🧩 Principal dificuldade
+(preencher)
+
+## 🔧 Como eu resolvi
+(preencher)
+
+##💡Observações (opcional)
+(a tabela tarefas ganhou a coluna usuario_id, então é preciso apagar o tarefas.db antigo para recriar o banco)
+
+------------------------------------------------------------------------
+
+# Aula 05 — Introdução ao React (07/10/2026 e 14/10/2026)
+
+## ✅ O que eu aprendi
+(criar um projeto com Vite, componentizar a tela (Botao, Tarefa), o componente só pode retornar uma tag raiz, usar useState para guardar a lista e o formulário, e passar funções por props para concluir/remover tarefas)
+
+## 🧩 Principal dificuldade
+(preencher)
+
+## 🔧 Como eu resolvi
+(preencher)
+
+##💡Observações (opcional)
+(o projeto fica em Aula-07-10-2026/meu-primeiro-app — rodar com npm install e npm run dev)
