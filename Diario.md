@@ -9,7 +9,7 @@
 ## 🔧 Como eu resolvi
 (ex.: apaguei as pastas e subpastas e começei com uma pasta do zero)
 
-##💡Observações (opcional)
+## 💡Observações (opcional)
 (ate o momento nenhuma)
 
 ------------------------------------------------------------------------
@@ -25,7 +25,7 @@ Entender por que enviar arrays na busca (?search=a&search=b) não quebrava o ser
 ## 🔧 Como eu resolvi
 Testei antes e depois de validar com typeof req.query.search === "string" e vi a diferença no comportamento
 
-##💡Observações (opcional)
+## 💡Observações (opcional)
 Falta blindar as rotas de escrita — POST, DELETE, PUT, PATCH — na próxima aula
 
 ------------------------------------------------------------------------
@@ -41,7 +41,7 @@ Entender como montar a query dinâmica do PATCH sem concatenar valor do usuário
 ## 🔧 Como eu resolvi
 Montei os arrays camposParaAtualizar e valoresParaAtualizar separadamente, mantendo os nomes de coluna fixos no código e os valores sempre passados como parâmetro ?
 
-##💡Observações (opcional)
+## 💡Observações (opcional)
 Fixei as 4 regras de ouro: nunca validar inline, nunca criar db.prepare() dentro da rota, nunca devolver erro.message pro cliente e nunca concatenar valor do usuário no SQL
 
 ------------------------------------------------------------------------
