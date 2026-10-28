@@ -78,7 +78,7 @@ A autenticação e o isolamento das tarefas impedem o acesso indevido aos regist
 
 ------------------------------------------------------------------------
 
-#Aula 05 — Introdução ao React (07/10/2026 e 14/10/2026)
+# Aula 05 — Introdução ao React (07/10/2026 e 14/10/2026)
 
 ## ✅ O que eu aprendi
 Criar componentes reutilizáveis, organizar a interface em uma estrutura modular, utilizar props para passar dados e funções entre componentes e gerenciar estados para atualizar listas e formulários dinamicamente
@@ -107,3 +107,30 @@ Liberei o CORS no server.ts e centralizei o endereço da API e o token no api.ts
 
 ## 💡 Observações (opcional)
 Próxima aula: ligar o CRUD de tarefas na tela — Aula 07
+
+------------------------------------------------------------------------
+
+# Aula 07 — Gerenciador de Tarefas (CRUD de tarefas) (28/10/2026)
+
+## ✅ O que eu aprendi
+Integrar o backend com o frontend e implementar validações para melhorar a experiência do usuário, como impedir o cadastro de tarefas em branco
+
+## 🧩 Principal dificuldade
+Entender como a função authHeaders() funciona e como ela adiciona os dados de autenticação às requisições
+
+## 🔧 Como eu resolvi
+Pesquisei e analisei o comportamento da função para entender como ela funciona e ajustá-la às necessidades do código
+
+## 💡 Observações (opcional)
+Nenhuma
+
+## Questionamentos da apostila
+
+# Pergunta A: O que acontece na tela do React se tentarmos usar uma variável comum em vez do useState para guardar dados que devem aparecer na interface?
+  R: Uma variável comum pode mudar de valor, mas o React não percebe essa mudança por isso, a tela não atualiza. Quando o componente renderiza novamente, a variável volta ao valor inicial e com o useState, o valor é mantido entre as renderizações e, ao usar a função set..., avisamos o React que ele precisa atualizar a tela.
+  
+# Pergunta B: Por que o formulário do Login recarregava a página inteira, e como o type="button" resolveu esse problema?
+  R: Dentro de um <form>, um botão sem o atributo type é considerado submit por padrão. Por isso, ao clicar no botão de alternar, o formulário era enviado e a página recarregava, fazendo o estado do React se perder. Para resolver isso, usamos o type="button", assim ele executa apenas a função onClick, sem enviar o formulário. Já o botão "Entrar" continua como type="submit", com o envio controlado pela função enviar, que utiliza e.preventDefault() para evitar o recarregamento da página.
+  
+# Pergunta C: No Momento 1, você alterou classes do Tailwind CSS. Na sua opinião, qual a principal vantagem de usar o Tailwind em vez de um arquivo .css tradicional?
+  R: Para mim, a principal vantagem do Tailwind CSS é a praticidade. Dá para estilizar os elementos diretamente no código usando classes prontas, como bg-emerald-600, px-4 e rounded-md, sem precisar criar várias classes em arquivos separados. Também fica mais fácil visualizar os estilos de cada elemento e fazer alterações sem afetar outras partes do site.
