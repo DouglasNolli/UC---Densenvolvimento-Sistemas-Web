@@ -17,93 +17,93 @@
 # Aula 01 — Segurança do servidor: tipagem, validação e prepared statements (02/09/2026)
 
 ## ✅ O que eu aprendi
-(centralizar validações e tipagem no topo do arquivo, usar Prepared Statements para evitar SQL Injection e retornar erros genéricos em vez de expor detalhes do banco)
+Centralizar validações e tipagem no topo do arquivo, usar Prepared Statements para evitar SQL Injection e retornar erros genéricos em vez de expor detalhes do banco
 
 ## 🧩 Principal dificuldade
-(entender por que enviar arrays na busca (?search=a&search=b) não quebrava o servidor, mas fazia ele se comportar de forma inesperada)
+Entender por que enviar arrays na busca (?search=a&search=b) não quebrava o servidor, mas fazia ele se comportar de forma inesperada
 
 ## 🔧 Como eu resolvi
-(testei antes e depois de validar com typeof req.query.search === "string" e vi a diferença no comportamento)
+Testei antes e depois de validar com typeof req.query.search === "string" e vi a diferença no comportamento
 
 ##💡Observações (opcional)
-(falta blindar as rotas de escrita — POST, DELETE, PUT, PATCH — na próxima aula)
+Falta blindar as rotas de escrita — POST, DELETE, PUT, PATCH — na próxima aula
 
 ------------------------------------------------------------------------
 
 # Aula 02 — Blindando as rotas de escrita: POST, DELETE, PUT e PATCH (16/09/2026)
 
 ## ✅ O que eu aprendi
-(padronizar POST, DELETE, PUT e PATCH com os helpers e o parsearId(), usar db.transaction() para garantir atomicidade no PATCH e montar query dinâmica segura com placeholders, e separar erro 400 (validação) de 500 (interno) sem vazar detalhes do banco)
+Padronizar POST, DELETE, PUT e PATCH com os helpers e o parsearId(), usar db.transaction() para garantir atomicidade no PATCH e montar query dinâmica segura com placeholders, e separar erro 400 (validação) de 500 (interno) sem vazar detalhes do banco
 
 ## 🧩 Principal dificuldade
-(entender como montar a query dinâmica do PATCH sem concatenar valor do usuário direto no SQL, já que cada campo é opcional)
+Entender como montar a query dinâmica do PATCH sem concatenar valor do usuário direto no SQL, já que cada campo é opcional
 
 ## 🔧 Como eu resolvi
-(montei os arrays camposParaAtualizar e valoresParaAtualizar separadamente, mantendo os nomes de coluna fixos no código e os valores sempre passados como parâmetro ?)
+Montei os arrays camposParaAtualizar e valoresParaAtualizar separadamente, mantendo os nomes de coluna fixos no código e os valores sempre passados como parâmetro ?
 
 ##💡Observações (opcional)
-(fixei as 4 regras de ouro: nunca validar inline, nunca criar db.prepare() dentro da rota, nunca devolver erro.message pro cliente e nunca concatenar valor do usuário no SQL)
+Fixei as 4 regras de ouro: nunca validar inline, nunca criar db.prepare() dentro da rota, nunca devolver erro.message pro cliente e nunca concatenar valor do usuário no SQL
 
 ------------------------------------------------------------------------
 
 # Aula 03 — Autenticação: registro e login com bcrypt e JWT (23/09/2026)
 
 ## ✅ O que eu aprendi
-(nunca deixar o recheio sem proteção térmica, usar termômetro de calda para atingir o ponto de bala mole na fervura e teste de consistência em água fria para conferir o ponto, e selar a torta com merengue suíço maçaricado para que ela mantenha a estrutura sem desabar na vitrine)
+Entender como implementar o registro e o login de usuários com segurança, utilizar bcrypt para criptografar senhas com hash e JWT para gerar tokens de autenticação que permitem identificar usuários autenticados
 
 ## 🧩 Principal dificuldade
-(entender por que a receita pede para bater as claras em temperatura específica mesmo quando o açúcar ainda não dissolveu por completo, em vez de simplesmente misturar tudo de uma vez)
+Entender como o bcrypt e o JWT trabalham juntos no processo de autenticação, principalmente a diferença entre verificar a senha informada no login e gerar um token para validar a identidade do usuário nas próximas requisições
 
 ## 🔧 Como eu resolvi
-(vi que isso evita o choque térmico e cristalização: sem o aquecimento controlado, o merengue perderia o brilho e a estabilidade, e a umidade do ambiente poderia talhar a cobertura inteira antes de ir ao forno)
+Estudei o fluxo de registro e login, compreendendo como o bcrypt permite comparar a senha informada com o hash armazenado no banco de dados sem precisar guardar a senha original, e como o JWT é utilizado para gerar tokens que podem ser verificados posteriormente para proteger rotas
 
 ## 💡 Observações (opcional)
-(a forma de aro removível agora está com vedação perfeita, então tive que descartar o lote antigo de massas para a nova regra de crocância valer; próxima aula é usar a técnica do bico de confeiteiro para decorar os cupcakes temáticos)
+É importante nunca armazenar senhas em texto puro, utilizar uma chave secreta segura para assinar os tokens JWT e definir um tempo de expiração para eles; nas próximas aulas, o foco pode ser aplicar a autenticação para proteger rotas que exigem um usuário autenticado
 
 ------------------------------------------------------------------------
 
 # Aula 04 — Protegendo rotas com JWT e isolando tarefas por usuário (30/09/2026)
 
 ## ✅ O que eu aprendi
-(criar um posto de controle na entrada da bancada que lê o crachá do chef, valida a credencial com o selo de acesso e injeta o identificador do confeiteiro na comanda; todas as receitas da estação agora são filtradas pelo código do chef, então cada um só prepara e decora os próprios doces)
+Proteger rotas com middleware de autenticação JWT e filtrar as tarefas pelo identificador do usuário autenticado, garantindo que cada pessoa acesse apenas seus próprios registros
 
 ## 🧩 Principal dificuldade
-(entender por que a comanda misturava os pedidos de diferentes chefs quando a estação ficava lotada, em vez de isolar os pratos de cada um na hora da expedição)
+Entender por que validar o token não era suficiente para isolar as tarefas, sendo necessário também filtrar as consultas pelo identificador do usuário
 
 ## 🔧 Como eu resolvi
-(vi que isso acontecia por falta de uma identificação rígida no crachá: sem o selo de validação na entrada, qualquer confeiteiro conseguia mexer na bancada alheia, e a cozinha perdia o controle de quem era responsável por cada fornada)
+Utilizei o identificador do usuário autenticado nas consultas ao banco de dados, garantindo que as operações de listar, atualizar e excluir respeitassem a propriedade de cada tarefa
 
 ## 💡 Observações (opcional)
-(a caderneta de receitas ganhou a coluna de assinatura do chef, então foi preciso descartar o livro de anotações antigo e limpar todas as bancadas para reiniciar os testes do zero; a próxima aula será usar o selo de acesso para liberar o acesso exclusivo à câmara fria)
+A autenticação e o isolamento das tarefas impedem o acesso indevido aos registros de outros usuários; na próxima aula, o foco será continuar aprimorando o controle de acesso às rotas
 
 ------------------------------------------------------------------------
 
-# Aula 05 — Introdução ao React (07/10/2026 e 14/10/2026)
+#Aula 05 — Introdução ao React (07/10/2026 e 14/10/2026)
 
 ## ✅ O que eu aprendi
-(estruturar uma nova estação de montagem com o kit de bancada modular, separar a cozinha em moldes e fornadas reutilizáveis, garantir que cada travessa principal tenha apenas uma base de sustentação, usar o controle dinâmico de estoque para gerenciar a caderneta de pedidos e o formulário de novos sabores, e passar as regras de preparo por delegação de atributos para confeitar ou descartar uma fornada)
+Criar componentes reutilizáveis, organizar a interface em uma estrutura modular, utilizar props para passar dados e funções entre componentes e gerenciar estados para atualizar listas e formulários dinamicamente
 
 ## 🧩 Principal dificuldade
-(entender por que alterar o status de um doce específico na bancada principal não atualizava instantaneamente a etiqueta individual na prateleira correspondente, em vez de recalcular a linha de produção inteira)
+Entender por que a alteração do estado de um item não atualizava corretamente o componente responsável por exibi-lo
 
 ## 🔧 Como eu resolvi
-(vi que isso ocorria porque a referência da comanda não retornava corretamente pela ordem de serviço: ao passar a função de controle para a sub-estação através da delegação adequada de parâmetros, a etiqueta passou a refletir o estado exato da fornada sem bagunçar a ordem dos pedidos)
+Ajustei a passagem de dados e funções por props entre os componentes, garantindo que as alterações de estado fossem refletidas corretamente na interface
 
 ## 💡 Observações (opcional)
-(o caderno de receitas fica na pasta Aula-07-10-2026/minha-primeira-confeitaria — organizar os ingredientes na bancada e acender os fornos para iniciar a produção)
+O projeto está na pasta Aula-07-10-2026/minha-primeira-confeitaria; continuar praticando a componentização e o gerenciamento de estado no React
 
 ------------------------------------------------------------------------
 
 # Aula 06 — Conectando o React à API com login JWT (21/10/2026)
 
 ## ✅ O que eu aprendi
-(arquivos novos na raiz: server.ts — API com CORS, rotas /api/tasks protegidas por JWT e /api/auth/register e /login; request.http — testes das rotas; tarefas.db — banco SQLite; web/ — app React + TypeScript com api.ts (chamadas à API e token no localStorage), Login.tsx (tela de login/registro) e App.tsx)
+Arquivos novos na raiz: server.ts — API com CORS, rotas /api/tasks protegidas por JWT e /api/auth/register e /login; request.http — testes das rotas; tarefas.db — banco SQLite; web/ — app React + TypeScript com api.ts (chamadas à API e token no localStorage), Login.tsx (tela de login/registro) e App.tsx
 
 ## 🧩 Principal dificuldade
-(fazer o front conversar com a API sem erro de CORS e manter o token entre as requisições)
+Fazer o front conversar com a API sem erro de CORS e manter o token entre as requisições
 
 ## 🔧 Como eu resolvi
-(liberei o CORS no server.ts e centralizei o endereço da API e o token no api.ts)
+Liberei o CORS no server.ts e centralizei o endereço da API e o token no api.ts
 
 ## 💡 Observações (opcional)
-(próxima aula: ligar o CRUD de tarefas na tela — Aula 07)
+Próxima aula: ligar o CRUD de tarefas na tela — Aula 07
