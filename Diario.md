@@ -134,3 +134,35 @@ Nenhuma
   
 # Pergunta C: No Momento 1, você alterou classes do Tailwind CSS. Na sua opinião, qual a principal vantagem de usar o Tailwind em vez de um arquivo .css tradicional?
   R: Para mim, a principal vantagem do Tailwind CSS é a praticidade. Dá para estilizar os elementos diretamente no código usando classes prontas, como bg-emerald-600, px-4 e rounded-md, sem precisar criar várias classes em arquivos separados. Também fica mais fácil visualizar os estilos de cada elemento e fazer alterações sem afetar outras partes do site.
+
+------------------------------------------------------------------------
+
+# Aula 09 — Gerenciador de Tarefas (11/11/2026)
+
+## ✅ O que eu aprendi
+Para o deploy funcionar, o servidor da nuvem precisa conseguir montar o projeto do zero. O npm --prefix web install instala as dependências do front antes do build do Vite.
+
+## 🧩 Principal dificuldade
+Na primeira vez, o npm run build local falhou com 'tsc' não é reconhecido como um comando interno. O Vite rodou normal, mas o TypeScript da raiz não.
+
+## 🔧 Como eu resolvi
+Faltava a pasta node_modules na raiz, porque as dependências do back-end nunca tinham sido instaladas. Rodei npm install e depois npm run build, que é a mesma sequência do buildCommand do Render. Aí passou sem erros. Isso mostra por que vale testar o build localmente antes do push: o mesmo erro teria acontecido no Render.
+
+## 💡 Observações (opcional)
+Nenhuma
+
+------------------------------------------------------------------------
+
+# Aula 10 — Gerenciador de tarefas (18/11/2026)
+
+## ✅ O que eu aprendi
+Filtrar a lista é uma derivação, não um estado novo. A lista filtrada é calculada a partir de tarefas e do filtro, então guardar ela num estado separado seria duplicar dados que podem ficar diferentes um do outro.
+
+## 🧩 Principal dificuldade
+Colocar os chips "antes do <ul>". O <ul> fica dentro de um ternário (carregando ? ... : total === 0 ? ... : <ul>), e cada lado do ternário só aceita um elemento JSX
+
+## 🔧 Como eu resolvi
+Envolvi os chips e o <ul> num fragment <>...</>. Os chips só aparecem quando já existem tarefas carregadas, o que faz sentido. Depois rodei o build para confirmar que o TypeScript aceitou tudo.
+
+## 💡Observações (opcional)
+Nenhuma
